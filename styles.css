@@ -35,7 +35,9 @@ textarea {
   flex-flow: row wrap;
   justify-content: center;
   padding: 50px;
-  width: 60%;
+  width: 75%;
+  max-width: 1200px;
+  margin-bottom: 25px;
   background-color: #f9f9f9;
   box-shadow: 11px 15px 31px 1px rgba(0, 0, 0, 0.61);
   -webkit-box-shadow: 11px 15px 31px 1px rgba(0, 0, 0, 0.61);
@@ -49,4 +51,20 @@ textarea {
   background-color: #f9f9f9;
   flex: 0 1 300px;
   padding: 20px 40px;
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 20px;
+  }
+  textarea {
+    height: 300px;
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  p {
+    font-size: 18px;
+  }
 }
