@@ -9,7 +9,7 @@ input.addEventListener('keyup', function (e) {
     let text = input.value;
     updateTextNumbers(
       countWords(text),
-      text.length,
+      countCharacters(text),
       countSentences(text),
       countParagraphs(text)
     );
@@ -37,6 +37,27 @@ function countWords(text) {
   }
   return words;
 }
+
+function countCharacters(text) {
+  text = text.toLowerCase();
+  let characters = 0;
+  for (let i = 0; i < text.length; i++) {
+    if (
+      (text[i].charCodeAt(0) > 'a'.charCodeAt(0) - 1 &&
+        text[i].charCodeAt(0) < 'z'.charCodeAt(0) + 1) ||
+      text[i] === '!' ||
+      text[i] === '?' ||
+      text[i] === '.' ||
+      text[i] === ',' ||
+      text[i] === "'" ||
+      text[i] === ' '
+    ) {
+      characters++;
+    }
+  }
+  return characters;
+}
+
 function countSentences(text) {
   text = text.toLowerCase();
   let sentences = 0;
@@ -81,10 +102,10 @@ function updateTextNumbers(words, characters, sentences, paragraphs) {
   document.getElementById('characters').textContent = characters;
   document.getElementById('sentences').textContent = sentences;
   document.getElementById('paragraphs').textContent = paragraphs;
-  HandleReadingTime(words);
+  handleReadingTime(words);
 }
 
-function HandleReadingTime(words) {
+function handleReadingTime(words) {
   // Based on average english language reading speed of 275 words per minute.
   let time = Math.floor(words / (275 / 60));
   let readingTimeText = document.getElementById('readingTime');
